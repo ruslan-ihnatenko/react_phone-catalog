@@ -1,0 +1,38 @@
+// src/components/NavBar/NavBar.module.scss
+@import '../../assets/styles/variables';
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: $color-secondary; // Базовий колір тексту
+  text-decoration: none;
+  transition: color 0.2s ease-in-out; // Плавна зміна кольору
+  text-transform: uppercase; // Усі великі літери
+
+  // Загальні стилі для посилань, які можуть бути перевизначені
+  // в батьківських компонентах для конкретних розмірів екрану
+  font-family: 'Montserrat', sans-serif; // Шрифт (зміни, якщо інший)
+  font-weight: 700; // Напівжирний за замовчуванням (або згідно дизайну)
+  font-size: 14px; // Розмір шрифту за замовчуванням
+
+  &:hover {
+    color: $color-white; // Колір при наведенні
+  }
+
+  &.active {
+    // Стилі для активного посилання (як у дизайні бургер-меню - підкреслення)
+    text-decoration: underline;
+    text-underline-offset: 4px; // Відступ підкреслення
+    text-decoration-thickness: 2px; // Товщина підкреслення
+    text-decoration-color: $color-white; // Колір підкреслення, можна інший
+  }
+}
+
+.navItem {
+  // Може бути порожнім, або містити базові стилі для li
+  // Відступи між li будуть задаватися в батьківських компонентах
+}

@@ -1,0 +1,106 @@
+// src/components/BurgerMenu/BurgerMenu.module.scss
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins'; // Якщо використовуємо міксини
+
+.overlay {
+  position: fixed;
+  top: 49px; // Height of the header
+  left: 0;
+  width: 100%;
+  height: calc(100% - 49px); // Subtract header height
+  background-color: $color-black;
+  z-index: 90; // Нижче хедера, але вище контенту
+  display: flex;
+  justify-content: flex-end; // Меню буде виїжджати справа
+  transform: translateX(100%); // Приховуємо меню за замовчуванням
+  transition: transform 0.3s ease-out; // Плавний анімований виїзд/заїзд
+
+  &.open {
+    transform: translateX(0); // Відображаємо меню
+  }
+
+  @media (min-width: $breakpoint-tablet-min) {
+    display: none;
+  }
+}
+
+.menu {
+  width: 100%; // Ширина меню з дизайну (або фіксована, 320px)
+  background-color: $color-black; // Темний фон меню
+  height: 100%;
+  padding: 24px 16px 16px 16px; // Внутрішній відступ
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Розподіл між хедером, навігацією, футером
+  transform: translateX(100%); // Приховуємо меню від початку (для анімації)
+  transition: transform 0.3s ease-out;
+
+  &.open {
+    transform: translateX(0); // Виїжджає
+  }
+}
+
+.menuNav {
+  flex-grow: 1; // Займає доступний простір
+  display: flex;
+  align-items: center; // Центруємо навігацію по вертикалі
+  justify-content: center; // Центруємо по горизонталі
+}
+
+.burgerNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center; // Центруємо текст посилань
+
+  :global(.navItem) {
+    padding: 8px auto;
+    margin-bottom: 16px; // Відступ між пунктами меню
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.navLink) {
+    font-size: 32px;
+    line-height: 1.2;
+    color: $color-white;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &.active {
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      text-decoration-thickness: 2px;
+      text-decoration-color: $color-white;
+    }
+  }
+}
+
+.menuFooterIcons {
+  display: flex;
+  justify-content: center; // Центруємо іконки внизу
+  gap: 60px; // Відступ між іконками
+  margin-top: 40px; // Відступ від навігації
+
+  .iconLink {
+    display: flex;
+    flex-direction: column; // Іконка над текстом
+    align-items: center;
+    gap: 5px;
+    color: $color-white;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .iconText {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+// src/assets/styles/global.scss
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_resets.scss';
+
+// Add padding to body to account for fixed header
+body {
+  padding-top: 48px; // Height of the header
+}
+
+// Глобальний контейнер для контенту
+.container {
+  max-width: $content-width-desktop;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    padding: 0 24px;
+  }
+  @media (min-width: $breakpoint-desktop-min) {
+    padding: 0;
+  }
+}
+
+// Utility classes
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Клас для плавних переходів
+.transition-ease {
+  transition: all 0.3s ease-in-out;
+}
+
+// Клас для приховування елементів
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

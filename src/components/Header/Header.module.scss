@@ -1,0 +1,161 @@
+// src/components/Header/Header.module.scss (Оновлений)
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.header {
+  background-color: $color-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid $color-elements;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  background-color: $color-black;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: $color-white;
+  cursor: pointer;
+
+  .logoLight {
+    font-weight: 300;
+  }
+}
+
+.navDesktop,
+.iconsDesktop {
+  display: none; // Приховуємо на мобільних за замовчуванням
+}
+
+.buttonContainer {
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 16px;
+  border-left: 1px solid $color-elements;
+}
+
+.burgerButton {
+  display: flex; // Показуємо на мобільних
+  flex-direction: column;
+  justify-content: space-around;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .burgerLine {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.open {
+    .burgerLine {
+      &:first-child {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:last-child {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+  }
+}
+
+// --- Адаптація для Tablet (640px і вище) ---
+@media (min-width: $breakpoint-tablet-min) {
+  .headerContent {
+    justify-content: space-between;
+    // height: 64px;
+  }
+
+  .burgerButton {
+    display: none; // Приховуємо бургер-меню на планшетах
+  }
+
+  .navDesktop,
+  .iconsDesktop {
+    display: flex; // Показуємо навігацію та іконки
+    align-items: center;
+
+    // Стилі для NavBar, коли він всередині .navDesktop
+    :global(.navList) { // :global() дозволяє стилізувати клас з іншого модуля
+      display: flex;
+      gap: 20px; // Відступ між посиланнями
+    }
+
+    :global(.navLink) {
+      font-size: 14px; // Розмір шрифту для десктопної навігації
+      font-weight: 700; // Напівжирний
+      // Перевизначення активного стану для десктопу, якщо потрібно (без підкреслення)
+      &.active {
+        text-decoration: none; // Видаляємо підкреслення
+        color: $color-white; // Просто зміна кольору
+      }
+    }
+  }
+
+  .navDesktop {
+    margin-left: 20px;
+  }
+
+  .iconsDesktop {
+    gap: 15px;
+  }
+
+  .iconLink {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .iconText {
+      font-size: 14px;
+    }
+  }
+}
+
+// --- Адаптація для Desktop (1200px і вище) ---
+@media (min-width: $breakpoint-desktop-min) {
+  .headerContent {
+    height: 64px;
+
+    .navDesktop {
+      :global(.navLink) {
+        font-size: 16px; // Можливо, більший шрифт на десктопі
+      }
+    }
+  }
+}
