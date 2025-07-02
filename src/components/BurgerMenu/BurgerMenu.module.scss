@@ -25,58 +25,58 @@
 }
 
 .menu {
-  width: 100%; // Ширина меню з дизайну (або фіксована, 320px)
-  background-color: $color-black; // Темний фон меню
+  width: 100%;
+  background-color: $color-black;
   height: 100%;
-  padding: 24px 16px 16px 16px; // Внутрішній відступ
+  padding: 24px 16px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Розподіл між хедером, навігацією, футером
-  transform: translateX(100%); // Приховуємо меню від початку (для анімації)
+  justify-content: flex-start;
   transition: transform 0.3s ease-out;
-
-  &.open {
-    transform: translateX(0); // Виїжджає
-  }
 }
 
 .menuNav {
-  flex-grow: 1; // Займає доступний простір
+  flex-grow: 1;
   display: flex;
-  align-items: center; // Центруємо навігацію по вертикалі
-  justify-content: center; // Центруємо по горизонталі
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .burgerNavList {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: center; // Центруємо текст посилань
+  align-items: center;
 
-  :global(.navItem) {
-    padding: 8px auto;
-    margin-bottom: 16px; // Відступ між пунктами меню
-    &:last-child {
-      margin-bottom: 0;
-    }
+  .navItem {
+    height: 27px;
+    display: flex;
+    align-items: center;
   }
 
-  :global(.navLink) {
-    font-size: 32px;
-    line-height: 1.2;
+  .navLink {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
     color: $color-white;
     text-transform: uppercase;
     transition: color 0.2s ease-in-out;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    background: none;
+    border: none;
 
     &:hover {
       color: $color-white;
     }
 
     &.active {
-      text-decoration: underline;
-      text-underline-offset: 8px;
-      text-decoration-thickness: 2px;
-      text-decoration-color: $color-white;
+      color: $color-white;
     }
   }
 }
@@ -85,7 +85,6 @@
   display: flex;
   justify-content: center; // Центруємо іконки внизу
   gap: 60px; // Відступ між іконками
-  margin-top: 40px; // Відступ від навігації
 
   .iconLink {
     display: flex;
@@ -102,5 +101,56 @@
     .iconText {
       font-size: 14px;
     }
+  }
+}
+
+.menuFooterActions {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $color-elements;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: $color-black;
+}
+
+.menuFooterBtn {
+  flex: 1 1 50%;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  cursor: pointer;
+  position: relative;
+  padding: 24px 0;
+  font-size: 14px;
+  transition: background 0.2s;
+  border-left: 1px solid $color-elements;
+
+
+  &:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .menuFooterBtn__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.menuFooterBtn--active {
+  color: $color-white;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+    height: 2px;
+    background: $color-white;
+    border-radius: 1px;
   }
 }

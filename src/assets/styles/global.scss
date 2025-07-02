@@ -1,49 +1,405 @@
 // src/assets/styles/global.scss
-@import './_variables.scss';
-@import './_mixins.scss';
-@import './_resets.scss';
+@import 'variables';
+@import 'mixins';
+@import 'resets';
 
 // Add padding to body to account for fixed header
 body {
   padding-top: 48px; // Height of the header
 }
 
-// Глобальний контейнер для контенту
+// Container for header - stretches full width on desktop
+.container-full {
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+// Container for content and footer - has max-width
 .container {
-  max-width: $content-width-desktop;
+  max-width: 1136px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-  width: 100%;
 
   @media (min-width: $breakpoint-tablet-min) {
     padding: 0 24px;
   }
-  @media (min-width: $breakpoint-desktop-min) {
+
+  &--full {
     padding: 0;
+    max-width: 100%;
+
+    @media (min-width: $breakpoint-tablet-min) {
+      padding: 0 24px;
+    }
   }
 }
 
-// Utility classes
-.flex {
-  display: flex;
+// BEM Grid system
+.u-grid {
+  display: grid;
+  gap: 16px;
+
+  &--12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--center {
+    place-items: center;
+  }
+
+  &--stretch {
+    align-items: stretch;
+  }
+
+  @media (max-width: $breakpoint-tablet-max) and (min-width: $breakpoint-tablet-min) {
+    &--12 {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile-max) {
+    &--4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 }
 
-.flex-center {
-  @include flex-center;
+// Grid column span utility
+@for $i from 1 through 12 {
+  .u-grid__col--#{$i} {
+    grid-column: span #{$i};
+  }
 }
 
-.flex-between {
+// Flex utilities
+.u-flex {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  &--row {
+    flex-direction: row;
+  }
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--between {
+    justify-content: space-between;
+  }
+
+  &--around {
+    justify-content: space-around;
+  }
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--start {
+    justify-content: flex-start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-start {
+    align-items: flex-start;
+  }
+}
+
+// Gap utilities
+.u-gap-4 {
+  gap: 4px !important;
+}
+
+.u-gap-8 {
+  gap: 8px !important;
+}
+
+.u-gap-12 {
+  gap: 12px !important;
+}
+
+.u-gap-16 {
+  gap: 16px !important;
+}
+
+.u-gap-24 {
+  gap: 24px !important;
+}
+
+.u-gap-32 {
+  gap: 32px !important;
+}
+
+.u-gap-40 {
+  gap: 40px !important;
+}
+
+.u-gap-48 {
+  gap: 48px !important;
+}
+
+.u-gap-64 {
+  gap: 64px !important;
+}
+
+// Responsive gap utilities
+
+@media (min-width: $breakpoint-tablet-min) {
+  .u-gap-md-16 {
+    gap: 16px !important;
+  }
+
+  .u-gap-md-24 {
+    gap: 24px !important;
+  }
+
+  .u-gap-md-32 {
+    gap: 32px !important;
+  }
+
+  .u-gap-md-40 {
+    gap: 40px !important;
+  }
+
+  .u-gap-md-48 {
+    gap: 48px !important;
+  }
+
+  .u-gap-md-64 {
+    gap: 64px !important;
+  }
+}
+
+@media (min-width: $breakpoint-desktop-min) {
+  .u-gap-lg-16 {
+    gap: 16px !important;
+  }
+
+  .u-gap-lg-24 {
+    gap: 24px !important;
+  }
+
+  .u-gap-lg-32 {
+    gap: 32px !important;
+  }
+
+  .u-gap-lg-40 {
+    gap: 40px !important;
+  }
+
+  .u-gap-lg-48 {
+    gap: 48px !important;
+  }
+
+  .u-gap-lg-64 {
+    gap: 64px !important;
+  }
+}
+
+// Responsive flex utilities
+
+@media (min-width: $breakpoint-tablet-min) {
+  .u-flex--md--row {
+    flex-direction: row;
+  }
+
+  .u-flex--md--col {
+    flex-direction: column;
+  }
+
+  .u-flex--md--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .u-flex--md--between {
+    justify-content: space-between;
+  }
+
+  .u-flex--md--around {
+    justify-content: space-around;
+  }
+
+  .u-flex--md--end {
+    justify-content: flex-end;
+  }
+
+  .u-flex--md--start {
+    justify-content: flex-start;
+  }
+
+  .u-flex--md--align-center {
+    align-items: center;
+  }
+
+  .u-flex--md--align-end {
+    align-items: flex-end;
+  }
+
+  .u-flex--md--align-start {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: $breakpoint-desktop-min) {
+  .u-flex--lg--row {
+    flex-direction: row;
+  }
+
+  .u-flex--lg--col {
+    flex-direction: column;
+  }
+
+  .u-flex--lg--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .u-flex--lg--between {
+    justify-content: space-between;
+  }
+
+  .u-flex--lg--around {
+    justify-content: space-around;
+  }
+
+  .u-flex--lg--end {
+    justify-content: flex-end;
+  }
+
+  .u-flex--lg--start {
+    justify-content: flex-start;
+  }
+
+  .u-flex--lg--align-center {
+    align-items: center;
+  }
+
+  .u-flex--lg--align-end {
+    align-items: flex-end;
+  }
+
+  .u-flex--lg--align-start {
+    align-items: flex-start;
+  }
+}
+
+// SCSS Mixins for grid/flex
+
+@mixin u-grid($cols: 12, $gap: 16px) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+@mixin u-grid-col($span) {
+  grid-column: span $span;
+}
+
+@mixin u-flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 // Клас для плавних переходів
+
 .transition-ease {
   transition: all 0.3s ease-in-out;
 }
 
+.u-h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.u-h2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.u-h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26ex;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.u-h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.u-uppercase {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+.u-buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.u-small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
 // Клас для приховування елементів
+
 .visually-hidden {
   position: absolute;
   width: 1px;

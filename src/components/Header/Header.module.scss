@@ -1,6 +1,7 @@
 // src/components/Header/Header.module.scss (Оновлений)
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
+@import '../../assets/styles/global';
 
 .header {
   background-color: $color-black;
@@ -11,151 +12,172 @@
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid $color-elements;
-}
 
-.headerContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 48px;
-  background-color: $color-black;
-}
-
-.logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  color: $color-white;
-  cursor: pointer;
-
-  .logoLight {
-    font-weight: 300;
-  }
-}
-
-.navDesktop,
-.iconsDesktop {
-  display: none; // Приховуємо на мобільних за замовчуванням
-}
-
-.buttonContainer {
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 16px;
-  border-left: 1px solid $color-elements;
-}
-
-.burgerButton {
-  display: flex; // Показуємо на мобільних
-  flex-direction: column;
-  justify-content: space-around;
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  .burgerLine {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &.open {
-    .burgerLine {
-      &:first-child {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      &:nth-child(2) {
-        opacity: 0;
-      }
-      &:last-child {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-    }
-  }
-}
-
-// --- Адаптація для Tablet (640px і вище) ---
-@media (min-width: $breakpoint-tablet-min) {
-  .headerContent {
-    justify-content: space-between;
-    // height: 64px;
-  }
-
-  .burgerButton {
-    display: none; // Приховуємо бургер-меню на планшетах
-  }
-
-  .navDesktop,
-  .iconsDesktop {
-    display: flex; // Показуємо навігацію та іконки
-    align-items: center;
-
-    // Стилі для NavBar, коли він всередині .navDesktop
-    :global(.navList) { // :global() дозволяє стилізувати клас з іншого модуля
-      display: flex;
-      gap: 20px; // Відступ між посиланнями
-    }
-
-    :global(.navLink) {
-      font-size: 14px; // Розмір шрифту для десктопної навігації
-      font-weight: 700; // Напівжирний
-      // Перевизначення активного стану для десктопу, якщо потрібно (без підкреслення)
-      &.active {
-        text-decoration: none; // Видаляємо підкреслення
-        color: $color-white; // Просто зміна кольору
-      }
-    }
-  }
-
-  .navDesktop {
-    margin-left: 20px;
-  }
-
-  .iconsDesktop {
-    gap: 15px;
-  }
-
-  .iconLink {
+  &__content {
     display: flex;
     align-items: center;
-    gap: 5px;
-    color: #fff;
-    transition: opacity 0.2s ease-in-out;
+    height: 48px;
+  }
 
-    &:hover {
-      opacity: 0.7;
-    }
+  &__logo-box {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    min-width: 120px;
+  }
 
-    .iconText {
-      font-size: 14px;
+  &__logo {
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $color-white;
+    cursor: pointer;
+    &-light {
+      font-weight: 300;
     }
   }
-}
 
-// --- Адаптація для Desktop (1200px і вище) ---
-@media (min-width: $breakpoint-desktop-min) {
-  .headerContent {
-    height: 64px;
+  &__nav {
+    display: none;
+  }
 
-    .navDesktop {
-      :global(.navLink) {
-        font-size: 16px; // Можливо, більший шрифт на десктопі
+  &__icons {
+    display: none;
+  }
+
+  &__button-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    height: 48px;
+  }
+
+  &__icon-stub {
+    display: block;
+    background: none;
+    border: none;
+  }
+
+  &__icon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    transition: background 0.2s;
+    border-left: 1px solid $color-elements;
+    &:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    &--menu {
+      width: 48px;
+      height: 48px;
+      padding: 16px;
+      .header__icon-stub {
+        width: 16px;
+        height: 16px;
       }
+    }
+    &--close {
+      width: 48px;
+      height: 48px;
+      padding: 16px;
+      .header__icon-stub {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    &--cart, &--fav {
+      width: 48px;
+      height: 48px;
+      .header__icon-stub {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @media (min-width: $breakpoint-desktop-min) {
+      width: 64px;
+      height: 64px;
+      &--menu, &--close, &--cart, &--fav {
+        width: 64px;
+        height: 64px;
+        padding: 24px;
+      }
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    min-width: 16px;
+    height: 16px;
+    background: $color-accent;
+    color: $color-white;
+    font-size: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    font-weight: 700;
+  }
+
+  // --- Tablet ---
+  @media (min-width: $breakpoint-tablet-min) {
+    &__content {
+      height: 48px;
+    }
+    &__logo-box {
+      height: 48px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    &__nav {
+      display: flex;
+      margin-left: 16px;
+      gap: 32px;
+      height: 100%;
+      align-items: center;
+    }
+    &__icons {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+    &__button-container {
+      display: none;
+    }
+  }
+
+  // --- Desktop ---
+  @media (min-width: $breakpoint-desktop-min) {
+    &__content {
+      height: 64px;
+      padding: 0 24px;
+    }
+    &__logo-box {
+      height: 64px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    &__nav {
+      margin-left: 24px;
+      gap: 64px;
+    }
+    &__icons {
+      gap: 16px;
     }
   }
 }

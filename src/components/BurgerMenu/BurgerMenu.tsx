@@ -1,6 +1,6 @@
 // src/components/BurgerMenu/BurgerMenu.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames'; // Вже встановлено
 import NavBar from '../NavBar';
@@ -16,9 +16,7 @@ type BurgerMenuProps = {
 };
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
-  // Тимчасові значення для кількості товарів/вибраного
-  const favCount = 0; // Згодом буде з контексту
-  const cartCount = 0; // Згодом буде з контексту
+  const location = useLocation();
 
   return (
     <div
@@ -31,19 +29,52 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
       >
         {/* Навігація бургер-меню */}
         <nav className={styles.menuNav}>
-          <NavBar onLinkClick={onClose} className={styles.burgerNavList} />{' '}
-          {/* <<< Використовуємо NavBar */}
+          <NavBar
+            onLinkClick={onClose}
+            className={classNames(
+              styles.burgerNavList,
+              'u-flex',
+              'u-flex--col',
+              'u-gap-16',
+            )}
+          />
         </nav>
 
-        {/* Іконки Favorites та Cart внизу меню */}
-        <div className={styles.menuFooterIcons}>
-          <Link to="/favorites" className={styles.iconLink} onClick={onClose}>
-            {/* <FavIcon className={styles.icon} /> */}
-            <span className={styles.iconText}>Fav ({favCount})</span>
+        {/* Новий блок для кнопок внизу */}
+        <div className={styles.menuFooterActions}>
+          <Link
+            to="/favorites"
+            className={classNames(styles.menuFooterBtn, {
+              [styles['menuFooterBtn--active']]:
+                location.pathname === '/favorites',
+            })}
+            onClick={onClose}
+          >
+            <span className={styles.menuFooterBtn__icon}>
+              <svg width="16" height="16">
+                <rect x="6" y="2" width="4" height="12" rx="2" fill="#fff" />
+              </svg>
+            </span>
           </Link>
-          <Link to="/cart" className={styles.iconLink} onClick={onClose}>
-            {/* <CartIcon className={styles.icon} /> */}
-            <span className={styles.iconText}>Cart ({cartCount})</span>
+          <Link
+            to="/cart"
+            className={classNames(styles.menuFooterBtn, {
+              [styles['menuFooterBtn--active']]: location.pathname === '/cart',
+            })}
+            onClick={onClose}
+          >
+            <span className={styles.menuFooterBtn__icon}>
+              <svg width="16" height="16">
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="7"
+                  stroke="#fff"
+                  strokeWidth="2"
+                  fill="none"
+                />
+              </svg>
+            </span>
           </Link>
         </div>
       </div>

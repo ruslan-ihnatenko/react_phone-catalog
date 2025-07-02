@@ -2,13 +2,13 @@
 @import '../../assets/styles/variables';
 
 .footer {
-  background-color: #222; // Тимчасовий темний фон
-  color: white;
-  padding: 16px;
+  background-color: $color-black;
+  color: $color-white;
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50px; // Просто для відділення від контенту
+  margin-top: 50px;
 
   // Обмеження ширини контенту футера
   max-width: $content-width-desktop;
@@ -21,6 +21,7 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+  
   @media (min-width: $breakpoint-desktop-min) {
     padding-left: 0;
     padding-right: 0;
@@ -33,13 +34,13 @@
 
 .backToTop {
   background: none;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid $color-white;
+  color: $color-white;
   padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #333;
+    background-color: $color-surface2;
   }
 }
