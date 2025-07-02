@@ -17,7 +17,7 @@ const NavBar: React.FC<NavBarProps> = ({ onLinkClick, className }) => {
       <li className={styles.navItem}>
         <Link
           to="/"
-          className={classNames(styles.navLink, {
+          className={classNames(styles.navLink, 'u-uppercase', {
             [styles.active]: location.pathname === '/',
           })}
           onClick={onLinkClick}
@@ -28,7 +28,7 @@ const NavBar: React.FC<NavBarProps> = ({ onLinkClick, className }) => {
       <li className={styles.navItem}>
         <Link
           to="/phones"
-          className={classNames(styles.navLink, {
+          className={classNames(styles.navLink, 'u-uppercase', {
             [styles.active]: location.pathname === '/phones',
           })}
           onClick={onLinkClick}
@@ -39,7 +39,7 @@ const NavBar: React.FC<NavBarProps> = ({ onLinkClick, className }) => {
       <li className={styles.navItem}>
         <Link
           to="/tablets"
-          className={classNames(styles.navLink, {
+          className={classNames(styles.navLink, 'u-uppercase', {
             [styles.active]: location.pathname === '/tablets',
           })}
           onClick={onLinkClick}
@@ -50,7 +50,7 @@ const NavBar: React.FC<NavBarProps> = ({ onLinkClick, className }) => {
       <li className={styles.navItem}>
         <Link
           to="/accessories"
-          className={classNames(styles.navLink, {
+          className={classNames(styles.navLink, 'u-uppercase', {
             [styles.active]: location.pathname === '/accessories',
           })}
           onClick={onLinkClick}

@@ -17,7 +17,6 @@
   color: $color-secondary; // Базовий колір тексту
   text-decoration: none;
   transition: color 0.2s ease-in-out; // Плавна зміна кольору
-  text-transform: uppercase; // Усі великі літери
   height: 27px;
   display: flex;
   align-items: center;
@@ -38,15 +37,15 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -6px;
+      bottom: -10.5px;
       height: 2px;
       background: $color-white;
+
+      @media (min-width: $breakpoint-desktop-min) {
+        bottom: -18.5px;
+      }
     }
   }
 }
 
-@media (min-width: $breakpoint-tablet-min) {
-  .navLink.active::after {
-    bottom: -10px;
-  }
-}
+

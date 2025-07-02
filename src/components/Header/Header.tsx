@@ -8,6 +8,7 @@ import BurgerMenu from '../BurgerMenu';
 import NavBar from '../NavBar';
 
 // Імпортуємо SVG-іконки, якщо є:
+import LogoIcon from '../../assets/icons/Logo.svg';
 // import { ReactComponent as BurgerIcon } from '../../assets/icons/burger.svg';
 // import { ReactComponent as FavIcon } from '../../assets/icons/fav.svg';
 // import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
@@ -27,7 +28,7 @@ const Header: React.FC = () => {
       <div className={classNames(styles.header__content, 'container-full')}>
         <div className={styles['header__logo-box']}>
           <Link to="/" className={styles.header__logo}>
-            NICE<span className={styles['header__logo-light']}> GADGETS</span>
+            <img src={LogoIcon} alt="Logo" />
           </Link>
         </div>
 
