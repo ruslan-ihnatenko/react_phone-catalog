@@ -1,19 +1,70 @@
 import React from 'react';
 import styles from './Footer.module.scss';
+import cn from 'classnames';
+import '../../assets/styles/global.scss';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/icons/Logo.svg';
+
+// eslint-disable-next-line max-len
+import { ReactComponent as ArrowUp } from '../../assets/icons/Chevron (Arrow Up).svg';
 
 export const Footer: React.FC = () => {
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer}>
-      <div className="container">
-        <div className={styles.logo}>Logo</div>
-        <a
-          href="https://github.com/ruslan-ihnatenko"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div
+        className={cn(
+          'container',
+          'u-flex',
+          'u-flex--col',
+          'u-flex--md--row',
+          'u-flex--md--between',
+          'u-gap-32',
+          'u-flex--md--center',
+        )}
+      >
+        <div className={styles.logo}>
+          <img src={logo} alt="logo" />
+        </div>
+        <div
+          className={cn(
+            styles.footer_links,
+            'u-flex--col',
+            'u-flex',
+            'u-gap-16',
+            'u-flex--md--row',
+            'u-uppercase',
+          )}
         >
-          GitHub
-        </a>
-        <button className={styles.backToTop}>Back to top</button>
+          <a
+            href="https://github.com/ruslan-ihnatenko"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <Link to="/contact">Contact</Link>
+          <Link to="/rights">Rights</Link>
+        </div>
+
+        <div className={styles.backToTopWrapper}>
+          <button
+            className={styles.backToTop}
+            onClick={handleBackToTop}
+            type="button"
+            aria-label="Back to top"
+          >
+            <span className={cn(styles.backToTopText, 'u-small-text')}>
+              Back to top
+            </span>
+            <span className={cn(styles.backToTopIcon)}>
+              <ArrowUp className={styles.backToTopArrow} />
+            </span>
+          </button>
+        </div>
       </div>
     </footer>
   );

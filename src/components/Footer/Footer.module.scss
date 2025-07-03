@@ -4,43 +4,65 @@
 .footer {
   background-color: $color-black;
   color: $color-white;
-  padding: 16px 0;
+  padding: 32px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
 
+  //temp
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 100;
+
   // Обмеження ширини контенту футера
   max-width: $content-width-desktop;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-
-  @media (min-width: $breakpoint-tablet-min) {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-  
-  @media (min-width: $breakpoint-desktop-min) {
-    padding-left: 0;
-    padding-right: 0;
-  }
+  border-top: 1px solid $color-elements;
 }
 
 .logo {
   font-weight: bold;
 }
 
-.backToTop {
-  background: none;
-  border: 1px solid $color-white;
+.backToTopWrapper {
+  display: flex;
+  gap: 16px;
   color: $color-white;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  // Add border, background, etc. as needed
+}
 
-  &:hover {
-    background-color: $color-surface2;
-  }
+.backToTopText {
+  color: $color-surface2;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  // Add padding, border-radius, hover/focus styles, etc.
+}
+
+.backToTopIcon {
+  display: flex;
+  align-items: center;
+  background-color: $color-surface2;
+  padding: 8px;
+  // Optionally style the icon (size, color, etc.)
+}
+
+.backToTopArrow {
+  width: 16px;
+  height: 16px;
+  color: $color-white;
 }
