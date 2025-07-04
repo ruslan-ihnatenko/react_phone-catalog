@@ -7,8 +7,8 @@ import NavBar from '../NavBar';
 
 // Імпортуємо іконки (поки що заглушки або реальні)
 // import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
-// import { ReactComponent as FavIcon } from '../../assets/icons/fav.svg';
-// import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
+import FavIcon from '../../assets/icons/Favourites (Heart Like).svg';
+import CartIcon from '../../assets/icons/Shopping bag (Cart).svg';
 
 type BurgerMenuProps = {
   isOpen: boolean;
@@ -51,9 +51,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
             onClick={onClose}
           >
             <span className={styles.menuFooterBtn__icon}>
-              <svg width="16" height="16">
-                <rect x="6" y="2" width="4" height="12" rx="2" fill="#fff" />
-              </svg>
+              <img src={FavIcon} alt="favorite" />
             </span>
           </Link>
           <Link
@@ -64,16 +62,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
             onClick={onClose}
           >
             <span className={styles.menuFooterBtn__icon}>
-              <svg width="16" height="16">
-                <circle
-                  cx="8"
-                  cy="8"
-                  r="7"
-                  stroke="#fff"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
+              <img src={CartIcon} alt="cart" />
             </span>
           </Link>
         </div>

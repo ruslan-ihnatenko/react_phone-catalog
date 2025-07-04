@@ -37,9 +37,14 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -10.5px;
+      bottom: 0;
       height: 2px;
       background: $color-white;
+
+      @media (min-width: $breakpoint-tablet-min) {
+        bottom: -10.5px;
+
+      }
 
       @media (min-width: $breakpoint-desktop-min) {
         bottom: -18.5px;

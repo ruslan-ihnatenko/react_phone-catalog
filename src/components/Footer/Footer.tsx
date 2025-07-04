@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/icons/Logo.svg';
 
 // eslint-disable-next-line max-len
-import { ReactComponent as ArrowUp } from '../../assets/icons/Chevron (Arrow Up).svg';
+import ArrowUp from '../../assets/icons/Chevron (Arrow Up).svg';
 
 export const Footer: React.FC = () => {
   const handleBackToTop = () => {
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
         )}
       >
         <div className={styles.logo}>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" className={styles.logo__img} />
         </div>
         <div
           className={cn(
@@ -36,6 +36,8 @@ export const Footer: React.FC = () => {
             'u-flex',
             'u-gap-16',
             'u-flex--md--row',
+            'u-gap-md-16',
+            'u-gap-lg-48',
             'u-uppercase',
           )}
         >
@@ -61,7 +63,11 @@ export const Footer: React.FC = () => {
               Back to top
             </span>
             <span className={cn(styles.backToTopIcon)}>
-              <ArrowUp className={styles.backToTopArrow} />
+              <img
+                src={ArrowUp}
+                alt="back to top"
+                className={styles.backToTopArrow}
+              />
             </span>
           </button>
         </div>

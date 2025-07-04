@@ -19,7 +19,7 @@
     height: 48px;
   }
 
-  &__logo-box {
+  &__logo-wrapper {
     display: flex;
     align-items: center;
     height: 48px;
@@ -29,16 +29,23 @@
   }
 
   &__logo {
-    font-family: Montserrat, sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    color: $color-white;
     cursor: pointer;
+    width: 64px;
     height: 22px;
-    &-light {
-      font-weight: 300;
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: $breakpoint-desktop-min) {
+      width: 80px;
+      height: 28px;
+    }
+
+    &-img {
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
   }
 
@@ -77,7 +84,7 @@
     transition: background 0.2s;
     border-left: 1px solid $color-elements;
     &:hover {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     &--menu {
@@ -98,7 +105,8 @@
         height: 16px;
       }
     }
-    &--cart, &--fav {
+    &--cart,
+    &--fav {
       width: 48px;
       height: 48px;
       .header__icon-stub {
@@ -110,7 +118,10 @@
     @media (min-width: $breakpoint-desktop-min) {
       width: 64px;
       height: 64px;
-      &--menu, &--close, &--cart, &--fav {
+      &--menu,
+      &--close,
+      &--cart,
+      &--fav {
         width: 64px;
         height: 64px;
         padding: 24px;
@@ -176,9 +187,6 @@
     &__nav {
       margin-left: 24px;
       gap: 64px;
-    }
-    &__icons {
-      gap: 16px;
     }
   }
 }

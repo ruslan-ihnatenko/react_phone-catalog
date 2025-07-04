@@ -10,22 +10,38 @@
   align-items: center;
   margin-top: 50px;
 
-  //temp
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  z-index: 100;
+  // temp
+  // position: fixed;
+  // left: 0;
+  // bottom: 0;
+  // width: 100vw;
+  // z-index: 100;
 
   // Обмеження ширини контенту футера
-  max-width: $content-width-desktop;
   margin-left: auto;
   margin-right: auto;
   border-top: 1px solid $color-elements;
 }
 
 .logo {
-  font-weight: bold;
+  cursor: pointer;
+  width: 64px;
+  height: 22px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: $breakpoint-desktop-min) {
+    width: 80px;
+    height: 28px;
+  }
+
+  &__img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 .backToTopWrapper {
@@ -34,7 +50,6 @@
   color: $color-white;
   align-items: center;
   justify-content: center;
-  // Add border, background, etc. as needed
 }
 
 .backToTopText {
@@ -50,7 +65,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  // Add padding, border-radius, hover/focus styles, etc.
 }
 
 .backToTopIcon {
@@ -58,11 +72,11 @@
   align-items: center;
   background-color: $color-surface2;
   padding: 8px;
-  // Optionally style the icon (size, color, etc.)
 }
 
 .backToTopArrow {
   width: 16px;
   height: 16px;
   color: $color-white;
+  fill: $color-white;
 }
