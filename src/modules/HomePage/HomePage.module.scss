@@ -1,8 +1,8 @@
 // src/modules/HomePage/HomePage.module.scss
+@import '../../assets/styles/variables';
+
 .homePage {
-  // Базові стилі для мобільної версії HomePage
-  padding: 16px; // Приклад внутрішнього відступу
-  // Інші стилі, якщо потрібні
+  color: $color-white;
 }
 
 .visuallyHidden {
